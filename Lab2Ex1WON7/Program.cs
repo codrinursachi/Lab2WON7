@@ -41,7 +41,7 @@ decimal ReadNumber()
 decimal ComputeCorrespondingBranch(decimal number) => number switch
 {
     <= -2 => Branch1(number),
-    <= 1 / 2 => Branch2(number),
+    <= 0.5M => Branch2(number),
     _ => Branch3(number),
 };
 
