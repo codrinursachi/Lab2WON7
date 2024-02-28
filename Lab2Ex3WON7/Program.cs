@@ -15,25 +15,26 @@ Console.OutputEncoding = Encoding.UTF8;
 
 ShowSum(ComputeDigitSum(ReadNumber()));
 
-string ReadNumber()
+int ReadNumber()
 {
     Console.WriteLine("Introduceti un numar pentru a-i fi calculata suma cifrelor");
     var numberRaw = Console.ReadLine();
     numberRaw = numberRaw?[0] == '-' ? numberRaw[1..] : numberRaw;
-    if (!int.TryParse(numberRaw, out _))
+    if (!int.TryParse(numberRaw, out int number))
     {
         Console.WriteLine("Nu ati introdus datele in format valid, mai incercati 😒");
         return ReadNumber();
     }
-    return numberRaw;
+    return number;
 }
 
-int ComputeDigitSum(string numberRaw)
+int ComputeDigitSum(int number)
 {
     int sum = default;
-    foreach (var digitRaw in numberRaw)
+    while (number > 0)
     {
-        sum += int.Parse(digitRaw.ToString());
+        sum += number%10;
+        number /=10;
     }
     return sum;
 }

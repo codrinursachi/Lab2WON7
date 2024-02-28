@@ -40,12 +40,9 @@ decimal ReadNumber()
 }
 decimal ComputeCorrespondingBranch(decimal number) => number switch
 {
-    <= -2 => Branch1(number),
-    <= 0.5M => Branch2(number),
-    _ => Branch3(number),
+    <= -2 => 7 * number * number,
+    <= 0.5M => 4 * number - 5,
+    _ => 14 * number - 7,
 };
 
 void ShowResult(decimal result) => Console.WriteLine(result + " 👌");
-decimal Branch1(decimal number) => 7 * number * number;
-decimal Branch2(decimal number) => 4 * number - 5;
-decimal Branch3(decimal number) => 14 * number - 7;

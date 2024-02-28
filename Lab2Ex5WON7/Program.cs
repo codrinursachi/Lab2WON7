@@ -13,7 +13,7 @@ Console.Clear();
 Console.OutputEncoding = Encoding.UTF8;
 #endregion
 
-ShowEvenNumbersAverage(ComputeEvenNumbersAverage(ReadArrayNumbers(ReadArrayLength())));
+ShowEvenNumbersAverage(ComputeEvenNumbersAverage(ComputeEvenNumbers((ReadArrayNumbers(ReadArrayLength())))));
 
 int ReadArrayLength()
 {
@@ -48,24 +48,25 @@ int[] ReadArrayNumbers(int arrayLength)
     return array;
 }
 
-decimal ComputeEvenNumbersAverage(int[] array)
+int[] ComputeEvenNumbers(int[] array)
 {
-    decimal sum = default;
-    decimal evenNumbers = default;
+    int[] evenArray= new int[array.Length];
+    int evenNumbers = default;
     foreach (int number in array)
     {
         if (int.IsEvenInteger(number))
         {
-            sum += number;
+            evenArray[evenNumbers]=number;
             evenNumbers++;
         }
     }
-    if (evenNumbers == 0)
+    if (evenArray.Length == 0)
     {
         Console.WriteLine("Nu aveti numere pare, mai incercati 😒");
-        return ComputeEvenNumbersAverage(ReadArrayNumbers(ReadArrayLength()));
+        return ComputeEvenNumbers(ReadArrayNumbers(ReadArrayLength()));
     }
-    return (decimal)sum / evenNumbers;
+    return evenArray;
 }
+decimal ComputeEvenNumbersAverage(int[] evenArray) => (decimal)evenArray.Sum() / evenArray.Length;
 
 void ShowEvenNumbersAverage(decimal average) => Console.WriteLine(average + " 👌");

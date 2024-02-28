@@ -19,7 +19,7 @@ int ReadNumber()
 {
     Console.WriteLine("Introduceti un numar pentru a-i fi calculat factorialul");
     var numberRaw = Console.ReadLine();
-    if (!int.TryParse(numberRaw, out int number) || number < 1)
+    if (!int.TryParse(numberRaw, out int number) || number < 0)
     {
         Console.WriteLine("Nu ati introdus datele in format valid, mai incercati 😒");
         return ReadNumber();
@@ -27,6 +27,6 @@ int ReadNumber()
     return number;
 }
 
-int ComputeFactorial(int number) => number == 1 ? 1 : number * ComputeFactorial(number - 1);
+int ComputeFactorial(int number) => number <= 0 ? 1 : number * ComputeFactorial(number - 1);
 
 void ShowFactorial(int number) => Console.WriteLine(number + " 👌");
