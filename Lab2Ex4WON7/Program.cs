@@ -27,6 +27,17 @@ int ReadNumber()
     return number;
 }
 
-int ComputeFactorial(int number) => number <= 0 ? 1 : number * ComputeFactorial(number - 1);
+int ComputeFactorial(int number)
+{
+    try
+    {
+        ArgumentOutOfRangeException.ThrowIfNegative(number);
+    }
+    catch(ArgumentOutOfRangeException ex)
+    {
+        Console.WriteLine("Nu sunt permise numere negative" + ex.Message);
+    }
+    return number <= 0 ? 1 : number * ComputeFactorial(number - 1);
+}
 
 void ShowFactorial(int number) => Console.WriteLine(number + " 👌");
